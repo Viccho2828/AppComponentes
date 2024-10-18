@@ -119,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/valhobbies"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
@@ -133,22 +133,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <CheckBox
-            android:id="@+id/checkBox3"
+            android:id="@+id/cbfutbol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:text="@string/valfutbol" />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/cbarte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:text="@string/valarte" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/cbotros"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:text="@string/valotroshobbies" />
     </LinearLayout>
 
     <TextView
@@ -156,12 +156,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/valestadocivil"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spestadocivil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -169,37 +169,37 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/swemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Switch"
+        android:text="@string/valnotificar"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spestadocivil" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnregistrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Button"
+        android:text="@string/valregistrar"
         app:icon="@drawable/baseline_person_add_24"
         app:iconGravity="textStart"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/swemail" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnlistado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Button"
+        android:text="@string/vallistado"
         app:icon="@drawable/baseline_checklist_24"
         app:iconGravity="textStart"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnregistrar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

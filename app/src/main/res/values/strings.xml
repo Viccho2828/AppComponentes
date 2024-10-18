@@ -8,4 +8,12 @@
     <string name="valmasculino">Masculino</string>
     <string name="valfemenino">Femenino</string>
     <string name="valotro">Otro</string>
+    <string name="valhobbies">Seleccione sus Hobbies:</string>
+    <string name="valfutbol">Futbol</string>
+    <string name="valarte">Diseño artístico</string>
+    <string name="valotroshobbies">Otros Hobbies</string>
+    <string name="valestadocivil">Seleccione su estado civil:</string>
+    <string name="valnotificar">¿Desea recibir notificaciones?</string>
+    <string name="valregistrar">REGISTRAR PERSONA</string>
+    <string name="vallistado">LISTA PERSONAS</string>
 </resources>
