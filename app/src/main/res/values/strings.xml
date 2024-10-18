@@ -16,4 +16,5 @@
     <string name="valnotificar">¿Desea recibir notificaciones?</string>
     <string name="valregistrar">REGISTRAR PERSONA</string>
     <string name="vallistado">LISTA PERSONAS</string>
+    <string name="valtitulolistado">LISTA DE PERSONAS</string>
 </resources>
