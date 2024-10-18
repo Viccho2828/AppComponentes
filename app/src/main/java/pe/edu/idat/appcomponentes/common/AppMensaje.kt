@@ -11,35 +11,22 @@ object AppMensaje {
                 tipo: TipoMensaje){
         val snackbar = Snackbar.make(vista,
             mensaje, Snackbar.LENGTH_LONG)
-        val snackbarView: View = snackbar.view
         if(tipo == TipoMensaje.INFO){
-            snackbarView.setBackgroundColor(
-                ContextCompat.getColor(
-                    MiApp.instancia,
-                    R.color.snackinfo
-                )
-            )
+            snackbar.setBackgroundTint(ContextCompat.getColor(
+                MiApp.instancia,
+                R.color.snackinfo))
         }else if(tipo == TipoMensaje.ADVERTENCIA){
-            snackbarView.setBackgroundColor(
-                ContextCompat.getColor(
-                    MiApp.instancia,
-                    R.color.snackadvertencia
-                )
-            )
+            snackbar.setBackgroundTint(ContextCompat.getColor(
+                MiApp.instancia,
+                R.color.snackadvertencia))
         } else if(tipo == TipoMensaje.ERROR){
-            snackbarView.setBackgroundColor(
-                ContextCompat.getColor(
-                    MiApp.instancia,
-                    R.color.snackerror
-                )
-            )
-        } else {
-            snackbarView.setBackgroundColor(
-                ContextCompat.getColor(
-                    MiApp.instancia,
-                    R.color.snackcorrecto
-                )
-            )
+            snackbar.setBackgroundTint(ContextCompat.getColor(
+                MiApp.instancia,
+                R.color.snackerror))
+        } else if(tipo == TipoMensaje.CORRECTO) {
+            snackbar.setBackgroundTint(ContextCompat.getColor(
+                MiApp.instancia,
+                R.color.snackcorrecto))
         }
         snackbar.show()
     }

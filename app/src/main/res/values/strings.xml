@@ -17,4 +17,7 @@
     <string name="valregistrar">REGISTRAR PERSONA</string>
     <string name="vallistado">LISTA PERSONAS</string>
     <string name="valtitulolistado">LISTA DE PERSONAS</string>
+    <string name="valerrornomape">Ingrese sus nombres y apellidos.</string>
+    <string name="valerrorgenero">Seleccione su género.</string>
+    <string name="valerrorhobbies">Seleccione al menos un hobbie.</string>
 </resources>
