@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">AppComponentes</string>
     <string name="valingresar">INGRESAR AL APP</string>
+    <string name="valtitulo">REGISTRO DE PERSONAS</string>
+    <string name="valnombres">Ingrese sus nombres</string>
+    <string name="valapellidos">Ingrese sus apellidos</string>
+    <string name="valgenero">Seleccione su género:</string>
+    <string name="valmasculino">Masculino</string>
+    <string name="valfemenino">Femenino</string>
+    <string name="valotro">Otro</string>
 </resources>
