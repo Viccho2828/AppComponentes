@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="snackerror">#DB0000</color>
+    <color name="snackadvertencia">#DC8F35</color>
+    <color name="snackinfo">#0C56DF</color>
+    <color name="snackcorrecto">#2E6C07</color>
 </resources>
