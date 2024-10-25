@@ -159,6 +159,7 @@ class RegistroActivity : AppCompatActivity(),
         binding.spestadocivil.setSelection(0)
         binding.etnombres.isFocusableInTouchMode = true
         binding.etnombres.requestFocus()
+        listaHobbies.clear()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

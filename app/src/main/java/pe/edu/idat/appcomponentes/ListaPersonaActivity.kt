@@ -1,20 +1,23 @@
 package pe.edu.idat.appcomponentes
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import pe.edu.idat.appcomponentes.databinding.ActivityListaPersonaBinding
+import android.R
 
 class ListaPersonaActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityListaPersonaBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_lista_persona)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding = ActivityListaPersonaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val listaPersonas = intent.getSerializableExtra("lista")
+                as ArrayList<*>
+        val  adapter = ArrayAdapter(
+            this,
+            R.layout.simple_list_item_1,
+            listaPersonas)
+        binding.lvpersonas.adapter = adapter
     }
 }
