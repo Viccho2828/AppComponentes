@@ -20,4 +20,5 @@
     <string name="valerrornomape">Ingrese sus nombres y apellidos.</string>
     <string name="valerrorgenero">Seleccione su género.</string>
     <string name="valerrorhobbies">Seleccione al menos un hobbie.</string>
+    <string name="valerrorestcivil">Seleccione su estado civil.</string>
 </resources>

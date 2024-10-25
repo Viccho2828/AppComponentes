@@ -3,6 +3,8 @@ package pe.edu.idat.appcomponentes
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,16 +13,27 @@ import pe.edu.idat.appcomponentes.common.AppMensaje
 import pe.edu.idat.appcomponentes.common.TipoMensaje
 import pe.edu.idat.appcomponentes.databinding.ActivityRegistroBinding
 
-class RegistroActivity : AppCompatActivity(), View.OnClickListener {
+class RegistroActivity : AppCompatActivity(),
+    View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: ActivityRegistroBinding
+    private var estadoCivil = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnregistrar.setOnClickListener(this)
-
+        binding.spestadocivil.onItemSelectedListener = this
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.estado_civil,
+            android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(
+                    android.R.layout.simple_spinner_dropdown_item)
+                binding.spestadocivil.adapter = adapter
+            }
     }
 
     fun validarNombreApellido():Boolean {
@@ -50,6 +63,9 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener {
             respuesta = true
         return respuesta
     }
+    fun validarEstadoCivil(): Boolean{
+        return estadoCivil == ""
+    }
     fun validarFormulario(): Boolean{
         var respuesta = false
         if(!validarNombreApellido()){
@@ -64,6 +80,10 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener {
             AppMensaje.mensaje(binding.root,
                 getString(R.string.valerrorhobbies), TipoMensaje.ERROR)
             respuesta = true
+        }else if(validarEstadoCivil()){
+            AppMensaje.mensaje(binding.root,
+                getString(R.string.valerrorestcivil), TipoMensaje.ERROR)
+            respuesta = true
         }
         return  respuesta
     }
@@ -72,5 +92,15 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(Intent(this,
                 ListaPersonaActivity::class.java))
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        estadoCivil = if(position > 0)
+            parent!!.getItemAtPosition(position).toString()
+        else ""
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }
