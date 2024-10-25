@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CheckBox
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,6 +19,8 @@ class RegistroActivity : AppCompatActivity(),
 
     private lateinit var binding: ActivityRegistroBinding
     private var estadoCivil = ""
+    private val listaHobbies = ArrayList<String>()
+    private val listaUsuarios = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +28,10 @@ class RegistroActivity : AppCompatActivity(),
         setContentView(binding.root)
         binding.btnregistrar.setOnClickListener(this)
         binding.spestadocivil.onItemSelectedListener = this
+        binding.btnlistado.setOnClickListener(this)
+        binding.cbfutbol.setOnClickListener(this)
+        binding.cbarte.setOnClickListener(this)
+        binding.cbotros.setOnClickListener(this)
         ArrayAdapter.createFromResource(
             this,
             R.array.estado_civil,
@@ -87,11 +94,71 @@ class RegistroActivity : AppCompatActivity(),
         }
         return  respuesta
     }
-    override fun onClick(v: View?) {
-        if(!validarFormulario()){
-            startActivity(Intent(this,
-                ListaPersonaActivity::class.java))
+    override fun onClick(v: View) {
+        if(v is CheckBox){
+            agregarQuitarHobbie(v)
+        } else {
+            when(v.id){
+                R.id.btnregistrar -> registrarPersona()
+                R.id.btnlistado -> irListaPersonas()
+            }
         }
+    }
+    private fun agregarQuitarHobbie(v: CheckBox) {
+        if(v.isChecked)
+            listaHobbies.add(v.text.toString())
+        else
+            listaHobbies.remove(v.text.toString())
+    }
+    fun obtenerGenero(): String{
+        return when(binding.radioGroup.checkedRadioButtonId){
+            R.id.rbmasculino ->  binding.rbmasculino.text.toString()
+            R.id.rbfemenino ->  binding.rbfemenino.text.toString()
+            R.id.rbotros ->  binding.rbotros.text.toString()
+            else -> ""
+        }
+    }
+    fun obtenerHobbies(): String{
+        var hobbies = ""
+        for(hobbie in listaHobbies){
+            hobbies += "$hobbie -"
+        }
+        return hobbies
+    }
+    private fun irListaPersonas() {
+        val intentListaPersona = Intent(
+            this, ListaPersonaActivity::class.java)
+            .apply {
+                putExtra("lista", listaUsuarios)
+            }
+        startActivity(intentListaPersona)
+    }
+    private fun registrarPersona() {
+        if(!validarFormulario()){
+            var info = binding.etnombres.text.toString()+"-"+
+                    binding.etapellido.text.toString()+"-"+
+                    obtenerGenero()+"-"+
+                    obtenerHobbies()+"-"+
+                    estadoCivil+"-"+
+                    binding.swemail.isChecked
+            listaUsuarios.add(info)
+            AppMensaje.mensaje(binding.root,
+                getString(R.string.mensajeregpersona),
+                TipoMensaje.CORRECTO)
+            setearControles()
+        }
+    }
+    fun setearControles(){
+        binding.etnombres.setText("")
+        binding.etapellido.setText("")
+        binding.swemail.isChecked = false
+        binding.cbfutbol.isChecked = false
+        binding.cbarte.isChecked = false
+        binding.cbotros.isChecked = false
+        binding.radioGroup.clearCheck()
+        binding.spestadocivil.setSelection(0)
+        binding.etnombres.isFocusableInTouchMode = true
+        binding.etnombres.requestFocus()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -101,6 +168,5 @@ class RegistroActivity : AppCompatActivity(),
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
     }
 }
